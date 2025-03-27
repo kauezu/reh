@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Envelope Animado</title>
+  <style>
+    .animated-mail {
+      position: relative;
+      width: 280px;
+      height: 180px;
+      background-color: #f9c5c8;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      margin: 150px auto;
+    }
+
+    .animated-mail .top-fold {
+      position: absolute;
+      top: 50px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 50px 100px 0 100px;
+      border-color: #23a95b transparent transparent transparent;
+      transform-origin: 50% 0%;
+      transition: transform 0.4s 0.4s, z-index 0.2s 0.4s;
+      z-index: 2;
+    }
+
+    .animated-mail .back-fold {
+      position: absolute;
+      bottom: 0;
+      width: 200px;
+      height: 100px;
+      background-color: #13802b;
+      z-index: 0;
+    }
+
+    /* Animação para abrir o envelope */
+    .animated-mail.open .top-fold {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+
+    /* Simulação de um envelope aberto */
+    .animated-mail.open .back-fold {
+      transform: rotateX(180deg);
+      background-color: #23a95b;
+    }
+  </style>
+</head>
+<body>
+  <div class="animated-mail" onclick="this.classList.toggle('open')">
+    <div class="top-fold"></div>
+    <div class="back-fold"></div>
+  </div>
+
+  <script>
+    // Esse script permite que você clique no envelope para abrir e fechar
+    document.querySelector('.animated-mail').addEventListener('click', function() {
+      this.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
